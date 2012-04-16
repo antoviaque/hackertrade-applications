@@ -4,15 +4,33 @@ Meteor.subscribe('applications_hackers');
 
 Session.set('search_text', '');
 
+function urlize(text) {
+    var list = text.match(/\b(http:\/\/|www\.|http:\/\/www\.)[^ \n\r<]{2,200}\b/g);
+    if(list) {
+        for(i = 0; i < list.length; i++) {
+            console.log(list[i]);
+            var prot = list[i].indexOf('http://') === 0 || list[i].indexOf('https://') === 0 ? '' : 'http://';
+            text = text.replace( list[i], "<a target='_blank' href='" + prot + list[i] + "'>"+ list[i] + "</a>" );
+        }
+    }
+    return text;
+}
+
+function text2html(text) {
+    var converter = new Showdown.converter();
+    var html = converter.makeHtml(text);
+    html = urlize(html);
+    return html;
+}
+
 function format_db_applications(applications) {
     var formatted = [];
-    var converter = new Showdown.converter();
 
     applications.forEach(function(application) {
-        application['links'] = converter.makeHtml(application['links']);
-        application['previous_works'] = converter.makeHtml(application['previous_works']);
-        application['price'] = converter.makeHtml(application['price']);
-        application['availabilities'] = converter.makeHtml(application['availabilities']);
+        application['links'] = text2html(application['links']);
+        application['previous_works'] = text2html(application['previous_works']);
+        application['price'] = text2html(application['price']);
+        application['availabilities'] = text2html(application['availabilities']);
         formatted.push(application);
     });
 
