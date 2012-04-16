@@ -1,0 +1,63 @@
+<head>
+  <title>Applications Manager</title>
+</head>
+
+<body>
+</body>
+<body>
+  <div id="top-pane">
+    {{> search}}
+  </div>
+
+  <div id="main-pane">
+    {{> applications}}
+  </div>
+
+  <div id="side-pane">
+    {{> filters}}
+  </div>
+</body>
+
+<template name="filters">
+  <h3>Applications</h3>
+  <div id="filters">
+    <!--
+    <div class="filter">Name
+        <input class="filter-input" id="filter-name-input" type="text" value="" />
+    </div>
+    <div class="filter">Price range</div>
+    <div class="filter">Skills</div>
+    <div class="filter">Batch</div>
+    <div class="filter">Status</div>
+    -->
+  </div>
+</template>
+
+<template name="search">
+    <div id="search">
+        <input type="text" id="search-input" placeholder="Search..." />
+    </div>
+</template>
+
+<template name="applications">
+<div class="applications">
+        {{#each results}}
+            <h2>{{name}}</h2>
+
+            <div><strong>Email:</strong> <a href="mailto:{{email}}">{{email}}</a> (added: {{date_added}})</div>
+            <div><strong>Links:</strong> {{{links}}} </div>
+            <div><strong>Previous works:</strong> {{{previous_works}}} </div>
+            <div><strong>Price:</strong> {{{price}}}</div>
+            <div><strong>Availabilities:</strong> {{{availabilities}}}</div>
+            <!--
+            <div><strong>Batch:</strong> </div>
+            <div><strong>Status:</strong> if in any kind of selection, which step and for which client (to handle selection from there)</div>
+            <div><strong>History:</strong> emails, chat, projects...</div>
+            <div><strong>Remarks:</strong> </div>
+            <div><strong>Ratings (+/- Adolfo):</strong> </div>
+            <div><strong>Skills:</strong> </div>
+            -->
+
+        {{/each}}
+    </div>
+</template>
