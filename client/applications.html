@@ -40,25 +40,54 @@
 </template>
 
 <template name="applications">
-<div class="applications">
+    <div class="applications">
         {{#each results}}
-            <h2>{{name}}</h2>
-
-            <div><strong>Email:</strong> <a href="mailto:{{email}}">{{email}}</a> (added: {{date_added}})</div>
-            <div><strong>Links:</strong> {{{links}}} </div>
-            <div><strong>Previous works:</strong> {{{previous_works}}} </div>
-            <div><strong>Price:</strong> {{{price}}}</div>
-            <div><strong>Availabilities:</strong> {{{availabilities}}}</div>
-            <!--
-            <div><strong>Batch:</strong> </div>
-            <div><strong>Status:</strong> if in any kind of selection, which step and for which client (to handle selection from there)</div>
-            <div><strong>History:</strong> emails, chat, projects...</div>
-            <div><strong>Remarks:</strong> </div>
-            <div><strong>Ratings (+/- Adolfo):</strong> </div>
-            <div><strong>Skills:</strong> </div>
-            -->
+            {{> application_item }}
             <hr />
-
         {{/each}}
     </div>
 </template>
+
+<template name="application_item">
+    <div class="application-item">
+        <div class="item-tags">
+            {{#each tag_objs}}
+                {{> application_tag}}
+            {{/each}}
+            {{#if adding_tag}}
+                <div class="tag edittag">
+                    <input type="text" id="edittag-input" value="" />
+                </div>
+            {{else}}
+                <div class="tag addtag">
+                +tag
+                </div>
+            {{/if}}
+        </div>
+
+        <h2>{{name}}</h2>
+
+        <div><strong>Email:</strong> <a href="mailto:{{email}}">{{email}}</a> (added: {{date_added}})</div>
+        <div><strong>Links:</strong> {{{links}}} </div>
+        <div><strong>Previous works:</strong> {{{previous_works}}} </div>
+        <div><strong>Price:</strong> {{{price}}}</div>
+        <div><strong>Availabilities:</strong> {{{availabilities}}}</div>
+        <!--
+        <div><strong>Batch:</strong> </div>
+        <div><strong>Status:</strong> if in any kind of selection, which step and for which client (to handle selection from there)</div>
+        <div><strong>History:</strong> emails, chat, projects...</div>
+        <div><strong>Remarks:</strong> </div>
+        <div><strong>Ratings (+/- Adolfo):</strong> </div>
+        <div><strong>Skills:</strong> </div>
+        -->
+    </div>
+</template>
+
+<template name="application_tag">
+    <div class="tag removable-tag">
+        <div class="name">{{tag}}</div>
+        <div class="remove"></div>
+    </div>
+</template>
+
+

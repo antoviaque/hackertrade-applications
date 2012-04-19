@@ -85,3 +85,59 @@ h3 {
     width: 100%;
 }
 
+.tag {
+    float: left;
+    margin: 5px;
+    padding: 2px 7px;
+    font-size: 80%;
+    font-weight: bold;
+    background: #999;
+    color: #fff;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+
+    opacity: 1;
+    transition: opacity 0.3s linear;
+    -moz-transition: opacity 0.3s linear;
+    -webkit-transition: opacity 0.3s linear;
+    -o-transition: opacity 0.3s linear;
+
+    position: relative;
+}
+
+.applications .application-item .item-tags {
+    overflow: auto;
+    float: right;
+    margin-right: 8px;
+}
+
+.applications .application-item .item-tags .tag {
+    margin-top: 15px;
+}
+
+.applications .application-item .item-tags .removable-tag {
+    padding-right: 22px;
+}
+
+.applications .application-item .item-tags .tag .remove {
+    position: absolute;
+    top: 0;
+    right: 4px;
+    bottom: 0;
+    width: 16px;
+    background: url("/img/close_16.png") no-repeat 0 center;
+}
+
+.applications .application-item .item-tags .tag .remove:hover {
+    background-position: -16px center;
+}
+
+.applications .application-item .item-tags div.addtag {
+    background: none;
+    color: #333;
+    border: 1px dashed #999;
+}
+
+
